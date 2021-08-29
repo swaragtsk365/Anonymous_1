@@ -1,0 +1,3 @@
+function  y=FinalModelRT
+y={'rt~Cat1+(1|subj_idx)';'rt~Cat2+(1|subj_idx)';'rt~ Cat1+Cat2+(1|subj_idx)';'rt~ Cat1+Cat2+Cat1:Cat2+(1|subj_idx)'; 'rt~ Cat1+Cat2+AD+(1|subj_idx)';'rt~ Cat1+Cat2+AD+ Cat1:AD+(1|subj_idx)';'rt~Cat1+Cat2+AD+Cat1:Cat2+Cat2:AD+(1|subj_idx)';'rt~Cat1+AD+(1|subj_idx)';'rt~Cat1+Cat2+AD+Cat2:AD+(1|subj_idx)'; 'rt~Cat1+Cat2+AD+LT+Cat1:Cat2+AD:LT+(1|subj_idx)';'rt~Cat1+Cat2+AD+Cat1:Cat2+(1|subj_idx)';'rt~Cat1+AD+(1|subj_idx)';'rt~Cat1+Cat2+AD+Cat2:AD+(1|subj_idx)';'rt~Cat1+Cat1+AD+LT:Cat2+AD:LT+(1|subj_idx)'; 'rt~Cat1+Cat2+AD+Cat1:Cat2+(1|subj_idx)'; 'rt~Cat1+Cat2+AD+Cat1:AD+Cat1:Cat2:AD+(1|subj_idx)';'rt~Cat1+Cat2+AD+Cat1:Cat2:AD+(1|subj_idx)'};
+end
