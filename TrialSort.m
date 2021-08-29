@@ -1,0 +1,73 @@
+function TrialSort(data)
+A=readtable(data);
+disp(A)
+Session=table2array(A(:,{'subj_idx'}));
+TrialNum=table2array(A(:,{'Trial_Number'}));
+RC=table2array(A(:,{'RC'}));
+Cat1=table2array(A(:,{'Cat1'}));
+Cat2=table2array(A(:,{'Cat2'}));
+RT=table2array(A(:,{'RT'}));
+MC=table2array(A(:,{'MC'}));
+LT=table2array(A(:,{'LT'}));
+JP=table2array(A(:,{'JP'}));
+AD=table2array(A(:,{'AD'}));
+Volume=table2array(A(:,{'Volume___'}));
+response=table2array(A(:,{'response'}));
+Idx=unique(Session);
+subj_idx=[];
+TN=[];
+RCVect=[];
+C1V=[];
+C2V=[];
+RTV=[];
+MCV=[];
+LTV=[];
+JPV=[];
+ADV=[];
+VV=[];
+RV=[];
+[N,~]=size(Idx);
+for k=1:N
+    TRNS=TrialNum(Session==k);
+    RTS=RT(Session==k);
+    Sessions=Session(Session==k);
+    RCS=RC(Session==k);
+    Cat1s=Cat1(Session==k);
+    Cat2s=Cat2(Session==k);
+    MCs=MC(Session==k);
+    LTs=LT(Session==k);
+    JPs=JP(Session==k);
+    ADs=AD(Session==k);
+    Volumes=Volume(Session==k);
+    responses=response(Session==k);
+    [SortTR,IDX]= sort(TRNS);
+    SortRTS=RTS(IDX);
+    SortS=Sessions(IDX);
+    SortRCS=RCS(IDX);
+    SortCat1s=Cat1s(IDX);
+    SortCat2s=Cat2s(IDX);
+    SortMCs=MCs(IDX);
+    SortLTs=LTs(IDX);
+    SortJPs=JPs(IDX);
+    SortADs=ADs(IDX);
+    SortV=Volumes(IDX);
+    SortR=responses(IDX);
+    subj_idx=[subj_idx;SortS];
+    TN=[TN;SortTR];
+    RCVect=[RCVect;SortRCS];
+    C1V=[C1V;SortCat1s];
+    C2V=[C2V;SortCat2s];
+    RTV=[RTV;SortRTS];
+    MCV=[MCV;SortMCs];
+    LTV=[LTV;SortLTs];
+    JPV=[JPV;SortJPs];
+    ADV=[ADV;SortADs];
+    VV=[VV;SortV];
+    RV=[RV;SortR];
+    
+    
+end
+Total=table(subj_idx,TN,RCVect,C1V,C2V,RTV,MCV,LTV,JPV,ADV,VV,RV);
+Total.Properties.VariableNames={'subj_idx','Trial_Number','RC','Cat1','Cat2','RT','MC','LT','JP','AD','Volume(%)','response'};
+writetable(Total,data);
+end
